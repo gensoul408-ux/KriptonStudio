@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KRIPTON STUDIO - Estilos Principales con Animación de Logo
+   KRIPTON STUDIO - Estilos y Animaciones de Logo
    ========================================================================== */
 
 :root {
@@ -7,7 +7,7 @@
     --bg-card: #12161f;
     --bg-card-hover: #1a202c;
     --accent: #00f2fe;
-    --accent-glow: rgba(0, 242, 254, 0.3);
+    --accent-glow: rgba(0, 242, 254, 0.35);
     --text-main: #f0f4f8;
     --text-muted: #8a99ad;
     --border-color: #1e2638;
@@ -127,16 +127,16 @@ body {
     border-radius: 2px;
 }
 
-/* Hero Section & Logo Animado */
+/* Hero Section & Animación del Logo */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 90px;
+    padding-top: 100px;
     padding-bottom: 50px;
-    background: radial-gradient(circle at center, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
 }
 
 .hero-logo-container {
@@ -146,27 +146,27 @@ body {
 }
 
 .animated-logo {
-    width: 260px;
-    max-width: 80vw;
+    width: 240px;
+    max-width: 75vw;
     height: auto;
     border-radius: 16px;
-    box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
     animation: float 4s ease-in-out infinite, pulseGlow 3s infinite alternate;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .animated-logo:hover {
-    transform: scale(1.05) rotateY(8deg) rotateX(5deg);
-    box-shadow: 0 0 50px rgba(0, 242, 254, 0.5);
+    transform: scale(1.06) rotateY(8deg) rotateX(4deg);
+    box-shadow: 0 0 55px rgba(0, 242, 254, 0.6);
 }
 
-/* Keyframes para Animaciones CSS */
+/* Keyframes de las animaciones */
 @keyframes float {
     0% {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-14px);
     }
     100% {
         transform: translateY(0px);
@@ -175,24 +175,24 @@ body {
 
 @keyframes pulseGlow {
     0% {
-        box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+        box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
     }
     100% {
-        box-shadow: 0 0 45px rgba(0, 242, 254, 0.45);
+        box-shadow: 0 0 45px rgba(0, 242, 254, 0.55);
     }
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--text-muted);
-    max-width: 700px;
+    max-width: 650px;
     margin: 0 auto 30px auto;
 }
 
@@ -293,7 +293,7 @@ body {
         font-size: 2.2rem;
     }
     .animated-logo {
-        width: 200px;
+        width: 190px;
     }
     .menu-toggle {
         display: flex;
