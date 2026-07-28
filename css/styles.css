@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KRIPTON STUDIO - Estilos Principales y Fondo Tecnológico Animado
+   KRIPTON STUDIO - Meteoritos Infinitos & Fondo Tech
    ========================================================================== */
 
 :root {
@@ -8,7 +8,7 @@
     --bg-card-hover: #171d2b;
     --accent: #00f2fe;
     --accent-secondary: #4facfe;
-    --accent-glow: rgba(0, 242, 254, 0.25);
+    --accent-glow: rgba(0, 242, 254, 0.35);
     --text-main: #f0f4f8;
     --text-muted: #8a99ad;
     --border-color: #1b2333;
@@ -67,7 +67,7 @@ body {
     margin: 0 auto 50px auto;
 }
 
-/* Header & Navegación */
+/* Header & Navbar */
 .header {
     position: fixed;
     top: 0;
@@ -116,7 +116,7 @@ body {
     color: var(--accent);
 }
 
-/* Hero Section con Fondo Tecnológico */
+/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -129,7 +129,7 @@ body {
     overflow: hidden;
 }
 
-/* Efectos de Fondo */
+/* Fondo de cuadrícula */
 .hero-bg-grid {
     position: absolute;
     top: 0;
@@ -145,40 +145,83 @@ body {
     -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
 }
 
+/* Esferas de luz neón */
 .glow-orb-1 {
     position: absolute;
     width: 350px;
     height: 350px;
-    top: 20%;
-    left: 15%;
-    background: radial-gradient(circle, rgba(0, 242, 254, 0.18) 0%, transparent 70%);
+    top: 15%;
+    left: 10%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 70%);
     border-radius: 50%;
     filter: blur(50px);
     z-index: 1;
-    animation: orbFloat 8s ease-in-out infinite alternate;
 }
 
 .glow-orb-2 {
     position: absolute;
     width: 400px;
     height: 400px;
-    bottom: 15%;
-    right: 15%;
-    background: radial-gradient(circle, rgba(79, 172, 254, 0.15) 0%, transparent 70%);
+    bottom: 10%;
+    right: 10%;
+    background: radial-gradient(circle, rgba(79, 172, 254, 0.18) 0%, transparent 70%);
     border-radius: 50%;
     filter: blur(60px);
     z-index: 1;
-    animation: orbFloat 10s ease-in-out infinite alternate-reverse;
 }
 
-@keyframes orbFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(30px, -30px) scale(1.15); }
+/* --- ANIMACIÓN DE METEORITOS --- */
+.meteors-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.meteor {
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    opacity: 0;
+    transform: rotate(35deg);
+    animation: meteorFall 3s linear infinite;
+}
+
+/* Posiciones y tiempos variados para efecto natural */
+.meteor:nth-child(1) { top: -10%; left: 15%; animation-delay: 0s; animation-duration: 2.5s; }
+.meteor:nth-child(2) { top: -10%; left: 35%; animation-delay: 1.2s; animation-duration: 3.2s; }
+.meteor:nth-child(3) { top: -10%; left: 55%; animation-delay: 0.5s; animation-duration: 2.8s; }
+.meteor:nth-child(4) { top: -10%; left: 75%; animation-delay: 2.1s; animation-duration: 3.5s; }
+.meteor:nth-child(5) { top: -10%; left: 90%; animation-delay: 0.8s; animation-duration: 2.2s; }
+.meteor:nth-child(6) { top: -10%; left: 5%;  animation-delay: 1.8s; animation-duration: 3s; }
+.meteor:nth-child(7) { top: -10%; left: 45%; animation-delay: 2.7s; animation-duration: 2.7s; }
+.meteor:nth-child(8) { top: -10%; left: 65%; animation-delay: 1.5s; animation-duration: 3.8s; }
+
+@keyframes meteorFall {
+    0% {
+        opacity: 0;
+        transform: translateY(0) translateX(0) rotate(35deg);
+    }
+    15% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(120vh) translateX(-300px) rotate(35deg);
+    }
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 .hero-badge {
@@ -216,7 +259,6 @@ body {
     margin: 0 auto 35px auto;
 }
 
-/* Botones */
 .hero-buttons {
     display: flex;
     gap: 15px;
@@ -243,7 +285,7 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(0, 242, 254, 0.45);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
 }
 
 .btn-secondary {
