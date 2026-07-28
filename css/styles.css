@@ -1,16 +1,17 @@
 /* ==========================================================================
-   KRIPTON STUDIO - Estilos y Animaciones de Logo
+   KRIPTON STUDIO - Estilos Principales y Fondo Tecnológico Animado
    ========================================================================== */
 
 :root {
-    --bg-main: #0a0c10;
-    --bg-card: #12161f;
-    --bg-card-hover: #1a202c;
+    --bg-main: #06080d;
+    --bg-card: #0f131c;
+    --bg-card-hover: #171d2b;
     --accent: #00f2fe;
-    --accent-glow: rgba(0, 242, 254, 0.35);
+    --accent-secondary: #4facfe;
+    --accent-glow: rgba(0, 242, 254, 0.25);
     --text-main: #f0f4f8;
     --text-muted: #8a99ad;
-    --border-color: #1e2638;
+    --border-color: #1b2333;
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -43,6 +44,8 @@ body {
 .section {
     padding: 80px 0;
     border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 2;
 }
 
 .section-title {
@@ -70,7 +73,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 12, 16, 0.85);
+    background-color: rgba(6, 8, 13, 0.85);
     backdrop-filter: blur(12px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
@@ -84,7 +87,7 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: var(--text-main);
     text-decoration: none;
@@ -113,110 +116,149 @@ body {
     color: var(--accent);
 }
 
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-main);
-    border-radius: 2px;
-}
-
-/* Hero Section & Animación del Logo */
+/* Hero Section con Fondo Tecnológico */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
     padding-top: 100px;
-    padding-bottom: 50px;
-    background: radial-gradient(circle at center, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
+    padding-bottom: 60px;
+    overflow: hidden;
 }
 
-.hero-logo-container {
-    margin-bottom: 25px;
+/* Efectos de Fondo */
+.hero-bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    z-index: 1;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
+
+.glow-orb-1 {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: 20%;
+    left: 15%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 1;
+    animation: orbFloat 8s ease-in-out infinite alternate;
+}
+
+.glow-orb-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    bottom: 15%;
+    right: 15%;
+    background: radial-gradient(circle, rgba(79, 172, 254, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 1;
+    animation: orbFloat 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, -30px) scale(1.15); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
     display: inline-block;
-    perspective: 1000px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
 }
 
-.animated-logo {
-    width: 240px;
-    max-width: 75vw;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
-    animation: float 4s ease-in-out infinite, pulseGlow 3s infinite alternate;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.animated-logo:hover {
-    transform: scale(1.06) rotateY(8deg) rotateX(4deg);
-    box-shadow: 0 0 55px rgba(0, 242, 254, 0.6);
-}
-
-/* Keyframes de las animaciones */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-14px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-@keyframes pulseGlow {
-    0% {
-        box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
-    }
-    100% {
-        box-shadow: 0 0 45px rgba(0, 242, 254, 0.55);
-    }
+.gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent) 50%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-content h1 {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
     font-weight: 800;
     margin-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
 }
 
 .hero-content p {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--text-muted);
     max-width: 650px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 35px auto;
+}
+
+/* Botones */
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn {
     display: inline-block;
-    padding: 12px 30px;
-    border-radius: 6px;
+    padding: 12px 28px;
+    border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
     transition: var(--transition);
     cursor: pointer;
+    font-size: 0.95rem;
 }
 
 .btn-primary {
-    background-color: var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
     color: #000;
-    box-shadow: 0 0 15px var(--accent-glow);
+    box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 25px var(--accent-glow);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.45);
 }
 
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Tarjetas y Secciones */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -226,8 +268,8 @@ body {
 .card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 25px;
-    border-radius: 10px;
+    padding: 28px;
+    border-radius: 12px;
     transition: var(--transition);
 }
 
@@ -235,6 +277,7 @@ body {
     background-color: var(--bg-card-hover);
     border-color: var(--accent);
     transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .card h3 {
@@ -256,7 +299,7 @@ body {
 .gallery-item {
     background-color: var(--bg-card);
     height: 180px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
@@ -272,10 +315,10 @@ body {
 }
 
 .discord-box {
-    background: linear-gradient(135deg, #12161f 0%, #1a202c 100%);
+    background: linear-gradient(135deg, #0f131c 0%, #171d2b 100%);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 40px;
+    border-radius: 16px;
+    padding: 45px 25px;
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
@@ -286,31 +329,11 @@ body {
     text-align: center;
     color: var(--text-muted);
     font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
 }
 
 @media (max-width: 768px) {
     .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    .animated-logo {
-        width: 190px;
-    }
-    .menu-toggle {
-        display: flex;
-    }
-    .nav-menu {
-        position: absolute;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background-color: var(--bg-main);
-        flex-direction: column;
-        align-items: center;
-        padding-top: 40px;
-        transition: var(--transition);
-    }
-    .nav-menu.active {
-        left: 0;
+        font-size: 2.3rem;
     }
 }
